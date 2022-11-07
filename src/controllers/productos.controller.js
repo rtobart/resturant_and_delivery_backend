@@ -1,0 +1,42 @@
+import { 
+    createOne as _createOne,
+    read as _read,
+    updateOne as _updateOne,
+    changeState as _changeState,
+    deleteOne as _deleteOne
+
+} from './crud.controller.js'
+
+const model = 'Producto'
+const fields = [
+    'nombre',
+    'descripcion',
+    'precio',
+    'imagen',
+    'estado',
+]
+
+const createOne = (req, res) => {
+    _createOne(req, res, model, fields)
+}
+const read = (req, res) => {
+    _read(req, res, model)
+}
+const updateOne = async (req, res) => {
+    const newFields = fields.filter((item) => item !== 'estado')
+    _updateOne(req, res, model, newFields)
+}
+const changeState = async (req, res) => {
+    _changeState(req, res, model)
+}
+const deleteOne = async (req, res) => {
+    _deleteOne(req, res, model)
+}
+
+export {
+    createOne,
+    read,
+    updateOne,
+    changeState,
+    deleteOne
+}
